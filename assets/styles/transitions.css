@@ -1,0 +1,38 @@
+.wrapper-enter-active {
+	animation: finished 2s reverse;
+}
+
+.wrapper-leave-active {
+	animation: finished 2s;
+}
+
+@keyframes finished {
+	0% {
+		opacity: 1;
+		top: 0;
+	}
+	50% {
+		opacity: 1;
+		top: 0;
+	}
+	60% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		top: -100vh;
+	}
+}
+
+.rotate-enter-active {
+    animation: rotate 0.2s;
+}
+
+.rotate-leave-active {
+    animation: rotate 0.2s reverse;
+}
+
+@keyframes rotate {
+    0% { opacity: 0; transform: scale(0) rotate(-180deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}

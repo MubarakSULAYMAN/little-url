@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+        <title>URL Shortner</title>
+        <link rel="icon" href="assets/images/link_shortener.png">
+        <link rel="stylesheet" href="assets/styles/base.css">
+        <link rel="stylesheet" href="assets/styles/transitions.css">
+        <link rel="stylesheet" href="assets/styles/invalid_form.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+            crossorigin="anonymous" />
+        <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <h1>URL Shortner</h1>
+
+            <section class="intro">
+                <p>Hello, welcome back! Let's get started.</p>
+            </section>
+
+            <button class="toggle-button" aria-labelledby="button-label" @click="toggleInfo">
+                <i class="far fa-lightbulb-on" aria-hidden="true" focusable="false" v-if="!reveal">
+                    <span id="button-label" hidden>View Instructions</span>
+                </i>
+                <i class="fas fa-lightbulb-slash" aria-hidden="true" focusable="false" v-else>
+                    <span id="button-label" hidden>Hide Instructions</span>
+                </i>
+                {{ revealState }} Instructions
+            </button>
+
+            <div id="box"></div>
+
+            <transition name="wrapper">
+                <section class="instructions" v-show="reveal">
+                    <h4>Usage Instructions</h4>
+
+                    <ol>
+                        <li>Paste or type the url to shorten in "Shorten URL" input.</li>
+                        <li>Click "Shorten URL" button to generate a shortened link.</li>
+                        <li>Click the "Copy URL" button to copy the generated link.</li>
+                    </ol>
+                </section>
+            </transition>
+
+            <section class="input-url">
+                <form :class="[wrongInput ? 'invalid-form' : '', 'input-url_original']" @submit.prevent="getShortenedUrl(originalUrl)">
+                    <input type="text" name="original-url" aria-labelledby="original-url" placeholder="Paste your link here" v-model="originalUrl">
+                    <button id="original-url" aria-labelledby="shorten-button" type="submit">
+                        <i class="far fa-file-archive" aria-hidden="true" focusable="false">
+                            <span id="shorten-button" hidden>Shorten URL</span>
+                        </i>
+                        Shorten URL
+                    </button>
+                </form>
+
+                <form class="[emptyShortUrl ? 'invalid-form' : '', 'input-url_shortened']" @submit.prevent="copyUrl">
+                    <input type="text" id="shortened-url" name="shortened-url" aria-labelledby="copy-url" readonly placeholder="Shortened link appears here" v-model="shortenedUrl">
+                    <span class="wrap">
+                        <button class="btn" id="copy-url" aria-labelledby="copy-button" data-clipboard-target="#shortened-url" type="submit">
+                            <i class="far fa-copy" aria-hidden="true" focusable="false">
+                                <span id="copy-button" hidden>Copy URL</span>
+                            </i>
+                            Copy URL
+                        </button>
+                        <transition name="rotate">
+                            <span class="tooltiptext" v-if="show">{{ copyMessage }}</span>
+                        </transition>
+                    </span>
+                </form>
+            </section>
+
+            <section class="request-info invalid-form">
+                <p class="loading" v-if="loading">Kindly wait while I generate you a link.</p>
+                <p class="error" v-if="wrongInput">Try again, you are supposed to provide a valid URL.</p>
+                <p class="error" v-if="error">An error occurred, I was unable to complete your request.</p>
+                <p class="error" v-if="emptyShortUrl">Nothing to copy, kindly first make a request.</p>
+            </section>
+
+            <footer>
+                <p>Made with all the 
+                    <i aria-hidden="true" class="fad fa-heart" title="love"></i>
+                    in the
+                    <i aria-hidden="true" class="fas fa-globe-africa" title="world"></i>
+                </p>
+                <div>&copy; Mubarak Sulayman (2021 - PRESENT), Source code available on 
+                    <a href="https://github.com/MubarakSULAYMAN/url-shortener" target="_blank" rel="noopener noreferrer" aria-labelledby="github-link">
+                        <i class="fab fa-github" aria-hidden="true" focusable="false">
+                            <span id="github-link" hidden>github</span>
+                        </i>
+                    </a>
+                </div>
+                <!-- <p>Feel free to
+                    <i aria-hidden="true" class="fad fa-ufo" title="explore"></i>
+                </p> -->
+            </footer>
+        </div>
+        <script type="module" src="scripts/main.js"></script>
+    </body>
+
+</html>
