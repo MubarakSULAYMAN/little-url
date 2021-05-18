@@ -291,11 +291,11 @@ footer {
 	}
 
 	[class*="input-url_"]:first-child input {
-		transform: translate(0, 9px);
+		transform: translate(0, 8px);
 	}
 
 	[class*="input-url_"]:first-child button {
-		transform: translate(0, -9px);
+		transform: translate(0, -8.5px);
 	}
 
 	.fa-file-archive,
