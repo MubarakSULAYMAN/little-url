@@ -291,6 +291,10 @@ footer {
 	}
 
 	[class*="input-url_"]:first-child input {
+		transform: translate(0, 9.5px);
+	}
+
+	[class*="input-url_"]:first-child button {
 		transform: translate(0, -9.5px);
 	}
 
