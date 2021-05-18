@@ -2,9 +2,9 @@
 
 A goto web app to help you minify your long website links :link:.
 
-**`Little URL`** is built with vue, and lots love :heart: :sparkling*heart:, and deployed on netlify. It is practically my first app built with more intension to accessibilty support. This is achieved by following both **_[WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/)_** and  **_[WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/)_** criteria and guidelines to make Web content and Web applications more accessible to people with disabilities.
+**`Little URL`** is built with vue, and lots love :heart: :sparkling*heart:, and deployed on netlify. It is practically my first app built with more intension to accessibilty support. This is achieved by following both ***[WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/)*** and  ***[WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/)*** criteria and guidelines to make Web content and Web applications more accessible to people with disabilities.
 
-Because of our believe in being progressive, we believe ths is just a work in progress :construction:. But, feel free to explore :ringed_planet: **[Little URL](https://little-url.netlify.app/)**, thank you friend.
+Because of our believe in being progressive, this is considered a work in progress :construction:. But, feel free to explore :ringed_planet: **[Little URL](https://little-url.netlify.app/)**, thank you friend.
 
 ## Table of contents
 
@@ -28,9 +28,13 @@ Because of our believe in being progressive, we believe ths is just a work in pr
 
 - [Built with](#built-with)
 
-- [Things I did not consider ~~/ ignored~~](#things-i-did-not-consider-~~/-ignored~~)
+- [Things tagged unnecessary](#things-tagged-unnecessary)
 
-- [Things I had issues with](#things-i-had-issues-with)
+- [Things avoided](#things-avoided)
+
+- [Things not consider ~~/ ignored~~](#things-not-consider-~~/-ignored~~)
+
+- [Things with issues unresolved](#things-with-issues-unresolved)
 
 - [Authors](#authors)
 
@@ -112,21 +116,33 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### How to use / About the App
 
-The home screen shows the available top headlines at the moment. Presently, the default is Nigeria and news source can be selected from the "news source" button on the home screen. A news or article can be searched while on the home screen using any combination of keywords. It is a web app and requires internet to operate. Arguably, the app only needs internet to start, if the user will not use more than the fetched news on initial load.
+The app has two input medium with a button each and a button to reveal and hide instruction / guide.
+
+1. To shorten a link (URL), paste or type the URL in first input area and click the button beside it that reads "Shorten URL".
+
+    > A shortened URL will be generated and automatically appears in the second input.
+
+2. Click the "Copy URL" button beside the second input area to copy the generated link or manaully copy using your mouse.
+
+    > To view instructions, kindly selected the "View Instructions" button to view the instructions as earlier described.
 
 [(Back to top)](#little-url)
 
 ## Built with
 
-- [Vue 2](https://vuejs.org/) - The progressive javasript framework used
+- [Vue 2](https://vuejs.org/) - The progressive javascript framework.  [Its CDN](https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js) was used.
 
 - [Font Awesome](https://fontawesome.com/icons/) - The web's most popular and next generation of our icon library + toolkit for vector icons and social logos on your website.
 
-- [Vue 2](https://fonts.google.com/) - A leading host of open-source fonts for use on the web, making the web more beautiful, fast, and open through great typography.
+- [Google Fonts](https://fonts.google.com/) - A leading host of open-source fonts for use on the web, making the web more beautiful, fast, and open through great typography.
+
+- [Clipboard](https://clipboardjs.com/) - A light weight 3kb gzipped package that requires no flash nor framework to copy text to clipboard. [Its CDN](https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js) was used.
+
+- [Axios](https://www.npmjs.com/package/axios/) - Promise based HTTP client for the browser and node.js. [Its CDN](https://unpkg.com/axios/dist/axios.min.js) was used.
 
 [(Back to top)](#little-url)
 
-## Things I find unnecessary
+## Things tagged unnecessary
 
 - [ ] Use of components as it seems really small and will lead to unnecessary use of props
 
@@ -136,19 +152,25 @@ The home screen shows the available top headlines at the moment. Presently, the 
 
 [(Back to top)](#little-url)
 
-## Things I did not consider ~~/ ignored~~
+## Things avoided
+
+- [ ] Use of packages (so CDN was preferred wherever possible).
+
+[(Back to top)](#little-url)
+
+## Things not consider ~~/ ignored~~
 
 - [ ] Routing and wrong route catching.
 - [ ] Detailed error catching with notification.
 - [ ] Animated request responses.
 - [ ] Linting style
-- [ ] Test
+- [ ] Testing
 
 [(Back to top)](#little-url)
 
-## Things I had issues with
+## Things with issues unresolved
 
-- [ ] Unable to use "import" for both css anf js files due to 'MIME type (“text/html”) mismatch (X-Content-Type-Options: nosniff)' which could not resolve.
+- [ ] Unable to use "import" for both css anf js local files due to 'MIME type (“text/html”) mismatch (X-Content-Type-Options: nosniff)' which could not resolve.
 
 - [ ] Unable to use of .env file as I could not discipher how to implement it in my project structure.
 
